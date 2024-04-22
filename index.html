@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Descontos na IDP Cursos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-bottom: 50px; /* Adicionando espaço para o rodapé */
+        }
+        h1 {
+            color: #333;
+        }
+        #botao-ganhar {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        #resultado {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+        header {
+            background-color: #f7f7f7;
+            padding: 20px 0;
+        }
+        .logo {
+            max-width: 200px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="logo1.png" alt="IDP Cursos" class="logo">
+    </header>
+
+    <h1>Descontos na IDP Cursos</h1>
+    <p>Clique no botão para ganhar seu desconto exclusivo!</p>
+    <button id="botao-ganhar" onclick="ganharDesconto()">Ganhar Desconto</button>
+    <p id="resultado"></p>
+
+    <footer>
+        Todos os direitos reservados IDP CURSOS
+    </footer>
+
+    <script>
+        function ganharDesconto() {
+            // Array de descontos disponíveis
+            var descontos = ["10%", "20%", "30%", "40%", "50%"];
+            
+            // Gera um número aleatório entre 0 e o número de descontos
+            var indiceDesconto = Math.floor(Math.random() * descontos.length);
+            
+            // Exibe o desconto sorteado
+            var resultado = document.getElementById("resultado");
+            var desconto = descontos[indiceDesconto];
+            resultado.textContent = "Parabéns! Você ganhou " + desconto + " de desconto!";
+            
+            // Desativa o botão para evitar múltiplas tentativas
+            document.getElementById("botao-ganhar").disabled = true;
+            
+            // Abre o link do WhatsApp com a mensagem adequada
+            var mensagem = "Olá! Ganhei um desconto de " + desconto + " na IDP Cursos!";
+            var linkWhatsApp = "https://api.whatsapp.com/send?phone=(16)981133455&text=" + encodeURIComponent(mensagem);
+            window.location.href = linkWhatsApp;
+        }
+    </script>
+</body>
+</html>
